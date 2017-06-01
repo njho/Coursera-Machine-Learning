@@ -83,9 +83,6 @@ A3 = H;
 
 J = (-1/m)*sum(sum((Y).*log(H) + (1-Y).*log(1-H)),2);
 
-size(Theta1)
-size(Theta2)
-
 regularization = (lambda/(2*m)) * (sum(sum(Theta1(:,2:end).^2, 2)) + sum(sum(Theta2(:,2:end).^2,2)));
 
 J += regularization;
@@ -112,8 +109,13 @@ for t = 1:m
 endfor
 
 
+  
   Theta1_grad = (1 / m) * Delta1;
-Theta2_grad = (1 / m) * Delta2;
+  Theta1_grad(:, 2:end) += ((lambda / m) * Theta1(:, 2:end));
+  Theta2_grad = (1 / m) * Delta2;
+  Theta2_grad(:,  2:end) += ((lambda / m) * Theta2(:, 2:end));
+  
+
 
 
 

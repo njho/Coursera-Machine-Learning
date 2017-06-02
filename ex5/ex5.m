@@ -33,6 +33,7 @@ load ('ex5data1.mat');
 
 % m = Number of examples
 m = size(X, 1);
+X
 
 % Plot training data
 plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
@@ -164,7 +165,7 @@ pause;
 %  lambda to see how the fit and learning curve change.
 %
 
-lambda = 0;
+lambda = 1;
 [theta] = trainLinearReg(X_poly, y, lambda);
 
 % Plot training data and fit
